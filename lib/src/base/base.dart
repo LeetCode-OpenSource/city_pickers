@@ -284,15 +284,19 @@ class _BaseView extends State<BaseView> {
   Widget _bottomBuild() {
     return new Container(
         width: double.infinity,
-        color: Theme.of(context).scaffoldBackgroundColor,
+        decoration: BoxDecoration(
+          color: Theme.of(context).scaffoldBackgroundColor,
+          borderRadius: BorderRadius.only(topLeft: Radius.circular(12.0), topRight: Radius.circular(12.0)),
+        ),
         child: new Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
             new Row(
               children: <Widget>[
-                FlatButton(
-                  onPressed: () {
+                GestureDetector(
+                  behavior: HitTestBehavior.opaque,
+                  onTap: () {
                     Navigator.pop(context);
                   },
                   child: widget.cancelWidget ??
@@ -303,8 +307,9 @@ class _BaseView extends State<BaseView> {
                         ),
                       ),
                 ),
-                FlatButton(
-                  onPressed: () {
+                GestureDetector(
+                  behavior: HitTestBehavior.opaque,
+                  onTap: () {
                     Navigator.pop(context, _buildResult());
                   },
                   child: widget.confirmWidget ??
