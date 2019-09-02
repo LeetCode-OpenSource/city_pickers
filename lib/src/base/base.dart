@@ -117,7 +117,7 @@ class _BaseView extends State<BaseView> {
             .indexWhere((Point p) => p.code == targetCity.code));
 
     areaController = new FixedExtentScrollController(
-        initialItem: targetCity.child
+        initialItem: (targetCity.child ?? [])
             .indexWhere((Point p) => p.code == targetArea.code));
   }
 
